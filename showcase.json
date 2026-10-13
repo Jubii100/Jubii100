@@ -1,0 +1,26 @@
+{
+  "_doc": "Keys are GitHub numeric repository ids: the file holds no repository names; titles are chosen for public display. showcase: printed by public title; optional period overrides the repo's own dates. exclude: duplicates and repos with no own commits, dropped from every count (forks drop automatically). external: collaborations a fine-grained token cannot see: {id, language, since, until: YYYY-MM}; ignored when the token sees them.",
+  "showcase": {
+    "1362907082": { "title": "Lernactal-OS", "line": "Self-improving personal AI operating system: a ranked population of agents under measured, adversarially reviewed change", "stack": "Python · Hermes Agent · Claude Code · Docker" },
+    "1369809556": { "title": "Royal AI Assistant", "line": "Production WhatsApp agentic-operations system for a 1,400-staff UAE retail group", "stack": "TypeScript · PostgreSQL · AWS · OpenClaw", "period": "2026-03 → 2026-09" },
+    "1011205636": { "title": "Growbal AI Core", "line": "Agentic crawler, hybrid vector search and onboarding research agent for a B2B services marketplace", "stack": "Python · Django · LangGraph · pgvector" },
+    "1204979849": { "title": "Stock-Health Agent", "line": "Inventory advisor: LLM drives a deterministic stock engine and a bounded research sub-agent inside an egress-locked runtime", "stack": "TypeScript · OpenClaw · AWS CDK" },
+    "1144067223": { "title": "Budget Analyst Agent", "line": "Text-to-SQL analyst: token-budgeted schema loading, read-only SQL validation, DSPy-compiled modules, calibrated confidence", "stack": "Python · LangGraph · DSPy · MCP" },
+    "1148894866": { "title": "Budget Analyst UI", "line": "Streaming chat front end for the budget analyst: tool-call events over the Vercel AI SDK", "stack": "TypeScript · Next.js · AI SDK" },
+    "1163914216": { "title": "LLM Robot Cell", "line": "ROS2 cell where LLM motion plans pass a deterministic safety gate; rejections feed back into replanning", "stack": "Python · ROS2 · FastAPI" },
+    "1224675744": { "title": "Robotics AI Bench", "line": "Phase-0 perception bench for an industrial arm: GPU pose workers over ZeroMQ, telemetry, AI kept advisory", "stack": "Python · Docker · YOLO11 · MediaPipe" },
+    "967745873": { "title": "Video Engagement Model", "line": "Multimodal engagement predictor: SigLIP2 frame embeddings through a DeiT encoder, fused with text", "stack": "PyTorch · Keras · Transformers" },
+    "1061373949": { "title": "Hybrid RAG + SQL Agent", "line": "Routes questions to documents, SQL or both on a local 3.8B model, with typed repair loops and citations", "stack": "Python · LangGraph · DSPy · Ollama" },
+    "953613575": { "title": "Research Digest Agent", "line": "Scheduled search → relevance filter → summariser–reviewer critique loop → daily e-mail digest", "stack": "Python · LangGraph" },
+    "948822238": { "title": "Speaking Coach", "line": "Local reasoning-model coach with a staged assessment dialogue and an embedding-quantised response cache", "stack": "Python · Ollama · Gradio" },
+    "821418878": { "title": "BirdCLEF 2024", "line": "Audio frames (MFCC + RMS) reshaped by convolution into a pretrained ViT's input space", "stack": "TensorFlow · Keras" },
+    "743038079": { "title": "Harmful Algae Detection", "line": "CNN proof of concept on underwater microscopy for a harmful-algal-bloom early-warning system", "stack": "TensorFlow · DVC" },
+    "622146830": { "title": "Logo Standardizer", "line": "OpenCV pipeline that finds a logo and its background and normalises crop, centring and mask", "stack": "Python · OpenCV" },
+    "418137525": { "title": "Graph Traffic Forecast", "line": "GCN-LSTM spatio-temporal forecasting on a road-sensor graph (MASE 0.69 vs naive)", "stack": "TensorFlow · StellarGraph" }
+  },
+  "exclude": ["1066238816", "1148191056", "1033838162", "1354951903"],
+  "external": [
+    { "id": 1011205636, "language": "Python", "since": "2025-06", "until": "2025-10" },
+    { "id": 1238678841, "language": "JavaScript", "since": "2026-05", "until": "2026-09" }
+  ]
+}

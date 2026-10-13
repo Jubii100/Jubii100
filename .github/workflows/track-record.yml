@@ -1,0 +1,38 @@
+name: Track record
+on:
+  schedule:
+    - cron: "17 3 * * *"   # daily, 07:17 Dubai
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: track-record
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Skip until a token is configured
+        id: gate
+        env:
+          TOKEN: ${{ secrets.REPO_LIST_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::notice::REPO_LIST_TOKEN not set: README left as committed (see SETUP.md)."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Rebuild track record from repository metadata
+        if: steps.gate.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.REPO_LIST_TOKEN }}
+        run: bash scripts/track-record.sh
+      - name: Commit if changed
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898315+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet || { git commit -m "Refresh track record"; git push; }
