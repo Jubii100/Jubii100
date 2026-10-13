@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Redraw the contribution graph (public calendar data; the default token suffices)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash scripts/contrib-graph.sh "${{ github.repository_owner }}"
       - name: Skip until a token is configured
         id: gate
         env:
@@ -30,9 +34,8 @@ jobs:
           GH_TOKEN: ${{ secrets.REPO_LIST_TOKEN }}
         run: bash scripts/track-record.sh
       - name: Commit if changed
-        if: steps.gate.outputs.run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898315+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git diff --cached --quiet || { git commit -m "Refresh track record"; git push; }
+          git add README.md assets/
+          git diff --cached --quiet || { git commit -m "Refresh contribution graph and track record"; git push; }

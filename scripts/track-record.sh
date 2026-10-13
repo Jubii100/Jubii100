@@ -58,18 +58,19 @@ jq -r --slurpfile cfg "$CONFIG" '
   | (map(select($show[.id])) | sort_by(.pushed_at) | reverse) as $named
   | ($n - ($named | length)) as $unnamed
   | [
-      "| Repositories | Owned | Contributed to | Private | Active since | Last push |",
-      "|:-:|:-:|:-:|:-:|:-:|:-:|",
-      "| **\($n)** | \($owned) | \($n - $owned) | \($priv) | \($since) | \($last) |",
+      "**\($n) repositories** · \($owned) owned · \($n - $owned) contributed to · \(if $priv == $n then "all private" else "\($priv) private" end) · active since \($since) · last push \($last)<br>",
+      "<sub>By language: \($langs)</sub>",
       "",
-      "<sub>Languages by repository: \($langs)</sub>",
+      "<details>",
+      "<summary><b>\($named | length) named projects</b> · \($unnamed) more counted, not named</summary>",
       "",
       "| Project | What it is | Stack | Period |",
       "|---|---|---|---|",
       ( $named[] | $show[.id] as $s
         | "| **\($s.title)** \(if .private then "🔒" else "" end) | \($s.line) | \($s.stack // .language // "—") | \($s.period // (if .created_at[:7] == .pushed_at[:7] then .created_at[:7] else "\(.created_at[:7]) → \(.pushed_at[:7])" end)) |" ),
       "",
-      "<sub>🔒 private: name, description and dates shown; code is not. \($unnamed) further repositories (client work, research notebooks, experiments) are counted above but not named. Generated from repository metadata by <code>scripts/track-record.sh</code>.</sub>"
+      "<sub>🔒 private: name, description and dates shown; code is not. The \($unnamed) unnamed repositories are client work, research notebooks and experiments. Generated from repository metadata by <code>scripts/track-record.sh</code>.</sub>",
+      "</details>"
     ] | .[]
 ' "$tmp/all.json" > "$tmp/block.md"
 

@@ -1,5 +1,5 @@
 {
-  "_doc": "Keys are GitHub numeric repository ids: the file holds no repository names; titles are chosen for public display. showcase: printed by public title; optional period overrides the repo's own dates. exclude: duplicates and repos with no own commits, dropped from every count (forks drop automatically). external: collaborations a fine-grained token cannot see: {id, language, since, until: YYYY-MM}; ignored when the token sees them.",
+  "_doc": "Keys are GitHub numeric repository ids: the file holds no repository names; titles are chosen for public display. showcase: printed by public title; optional period overrides the repo's own dates. exclude: duplicates, repos with no own commits and this profile repo, dropped from every count (forks drop automatically). external: collaborations a fine-grained token cannot see: {id, language, since, until: YYYY-MM}; ignored when the token sees them.",
   "showcase": {
     "1362907082": { "title": "Lernactal-OS", "line": "Self-improving personal AI operating system: a ranked population of agents under measured, adversarially reviewed change", "stack": "Python · Hermes Agent · Claude Code · Docker" },
     "1369809556": { "title": "Royal AI Assistant", "line": "Production WhatsApp agentic-operations system for a 1,400-staff UAE retail group", "stack": "TypeScript · PostgreSQL · AWS · OpenClaw", "period": "2026-03 → 2026-09" },
@@ -18,7 +18,7 @@
     "622146830": { "title": "Logo Standardizer", "line": "OpenCV pipeline that finds a logo and its background and normalises crop, centring and mask", "stack": "Python · OpenCV" },
     "418137525": { "title": "Graph Traffic Forecast", "line": "GCN-LSTM spatio-temporal forecasting on a road-sensor graph (MASE 0.69 vs naive)", "stack": "TensorFlow · StellarGraph" }
   },
-  "exclude": ["1066238816", "1148191056", "1033838162", "1354951903"],
+  "exclude": ["1066238816", "1148191056", "1033838162", "1354951903", "1417697470"],
   "external": [
     { "id": 1011205636, "language": "Python", "since": "2025-06", "until": "2025-10" },
     { "id": 1238678841, "language": "JavaScript", "since": "2026-05", "until": "2026-09" }

@@ -12,9 +12,15 @@
 - `external` adds organisation repos a fine-grained token cannot see (`{ "id", "language", "since", "until" }`); ignored when the token sees them.
 - New organisation repos appear as "contributed to" automatically; add any without your own commits to `exclude`.
 
+## Contribution graph
+GitHub always draws its own contribution graph below the README, so `scripts/contrib-graph.sh` renders the
+same calendar (per-day levels from the GraphQL `contributionCalendar`, identical to the public profile) into
+`assets/contrib-{light,dark}.svg`, shown at the top of the README. Any token works; the workflow uses the
+default Actions token, so this part refreshes daily with no setup.
+
 ## Daily refresh (GitHub Actions)
-`.github/workflows/track-record.yml` runs daily and on demand. Until the secret below exists it logs a
-notice and leaves the README as committed.
+`.github/workflows/track-record.yml` runs daily and on demand. It always redraws the graph; until the secret
+below exists it logs a notice and leaves the track-record block as committed.
 
 1. Create a **fine-grained personal access token**: Settings → Developer settings → Fine-grained tokens.
    Resource owner `Jubii100`, *All repositories*, permission **Metadata: Read-only**, nothing else.
@@ -29,6 +35,7 @@ are then missing from the count. Either add them under `external`, or use a clas
 ```
 scripts/track-record.sh            # rewrite the block (uses your gh login)
 scripts/track-record.sh --check    # exit 1 if the block is stale
+scripts/contrib-graph.sh           # redraw assets/contrib-*.svg
 ```
 
 ## Adding a project
